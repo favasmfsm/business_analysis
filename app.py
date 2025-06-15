@@ -69,12 +69,11 @@ if df1 and df2:
     # for all items in df with net_purchase_amount less than 10, ask the user to enter the net_purchase_amount
     for index, row in df.iterrows():
         if row["net_purchase_amount"] < 10:
-            net_purchase_amount = st.sidebar.number_input(
+            net_purchase_amount = st.sidebar.text_input(
                 "Enter the net purchase amount for " + row["Description"],
                 value=row["net_purchase_amount"],
-                step=1,
             )
-            df.at[index, "net_purchase_amount"] = net_purchase_amount
+            df.at[index, "net_purchase_amount"] = float(net_purchase_amount)
 
     df = df[~df["Customer Name"].str.contains("CASH A/C")]
     df["profit"] = df.Qty * (df["sale_rate"] - df.net_purchase_amount)
