@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-st.title("Sales and Purchase Data Merger")
+st.title("Profit Calculator")
 
 df1 = st.sidebar.file_uploader("Upload Sales Register", type=["xlsx"])
 df2 = st.sidebar.file_uploader("Upload Purchase", type=["xlsx"])
