@@ -97,9 +97,8 @@ if df1 and df2:
     profit_df = (df.groupby("Date")[["profit"]].sum()).reset_index()
     # profit_df = profit_df.sort_values(by="profit", ascending=False)
     profit_df["Date"] = profit_df["Date"].dt.strftime("%d-%m-%Y")
-    st.title("Profit Summary")
-    total_profit = profit_df["profit"].sum()
-    st.write("Total Profit: " + str(total_profit))
+    st.title("Total Profit: " + str(profit_df["profit"].sum()))
+
     st.dataframe(profit_df)
 
     selected_date = st.sidebar.selectbox("Select a date", profit_df.Date)
