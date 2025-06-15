@@ -104,5 +104,7 @@ if df1 and df2:
     selected_date = st.sidebar.selectbox("Select a date", profit_df.Date)
     date_df = df[df["Date"] == pd.to_datetime(selected_date)]
 
-    st.title("Sales Summary for " + selected_date)
+    st.title(
+        "Sales Summary for " + selected_date + " : " + str(date_df["profit"].sum())
+    )
     st.dataframe(date_df)
