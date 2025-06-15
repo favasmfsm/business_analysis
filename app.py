@@ -86,11 +86,11 @@ if df1 and df2:
             100 * (df["sale_rate"] - df.net_purchase_amount) / df.net_purchase_amount
         )
 
-    df = df.sort_values(by="profit", ascending=False)
+    # df = df.sort_values(by="profit", ascending=False)
 
-    profit_df = df.groupby("Date")[["profit"]].sum()
-    profit_df = profit_df.sort_values(by="profit", ascending=False)
-
+    profit_df = (df.groupby("Date")[["profit"]].sum()).reset_index()
+    # profit_df = profit_df.sort_values(by="profit", ascending=False)
+    profit_df["Date"] = profit_df["Date"].dt.strftime("%d-%m-%Y")
     st.title("Profit Summary")
     st.dataframe(profit_df)
 
