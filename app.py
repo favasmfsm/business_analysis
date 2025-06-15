@@ -97,7 +97,7 @@ if df1 and df2:
     profit_df = (df.groupby("Date")[["profit"]].sum()).reset_index()
     # profit_df = profit_df.sort_values(by="profit", ascending=False)
     profit_df["Date"] = profit_df["Date"].dt.strftime("%d-%m-%Y")
-    st.title("Total Profit: " + str(profit_df["profit"].sum()))
+    st.title("Total Profit: " + str(int(profit_df["profit"].sum())))
 
     st.dataframe(profit_df)
 
@@ -105,6 +105,6 @@ if df1 and df2:
     date_df = df[df["Date"] == pd.to_datetime(selected_date)]
 
     st.title(
-        "Sales Summary for " + selected_date + " : " + str(date_df["profit"].sum())
+        "Sales Summary for " + selected_date + " : " + str(int(date_df["profit"].sum()))
     )
     st.dataframe(date_df)
