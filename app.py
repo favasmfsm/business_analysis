@@ -73,6 +73,20 @@ if df1 and df2:
 
     df = df[~df["Customer Name"].str.contains("CASH A/C")]
     df["profit"] = df.Qty * (df["sale_rate"] - df.net_purchase_amount)
+
+    for description in df["Description"].unique():
+        if df[df["Description"] == description]["profit"] < 0:
+            # st.write(description)
+            net_purchase_amount = st.sidebar.text_input(
+                "purchase amount for " + description,
+                value=df[df["Description"] == description]["net_purchase_amount"].min(),
+                key=description,
+            )
+            df.loc[df["Description"] == description, "net_purchase_amount"] = float(
+                net_purchase_amount
+            )
+    df["profit"] = df.Qty * (df["sale_rate"] - df.net_purchase_amount)
+
     if df.net_purchase_amount.min() > 10:
         df["profit_percentage"] = (
             100 * (df["sale_rate"] - df.net_purchase_amount) / df.net_purchase_amount
