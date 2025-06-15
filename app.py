@@ -75,7 +75,7 @@ if df1 and df2:
     df["profit"] = df.Qty * (df["sale_rate"] - df.net_purchase_amount)
 
     for description in df["Description"].unique():
-        if df[df["Description"] == description]["profit"] < 0:
+        if df[df["Description"] == description]["profit"].min() < 0:
             # st.write(description)
             net_purchase_amount = st.sidebar.text_input(
                 "purchase amount for " + description,
