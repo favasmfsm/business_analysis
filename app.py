@@ -81,9 +81,10 @@ if df1 and df2:
 
     df = df[~df["Customer Name"].str.contains("CASH A/C")]
     df["profit"] = df.Qty * (df["sale_rate"] - df.net_purchase_amount)
-    df["profit_percentage"] = (
-        100 * (df["sale_rate"] - df.net_purchase_amount) / df.net_purchase_amount
-    )
+    if df.net_purchase_amount.min() > 10:
+        df["profit_percentage"] = (
+            100 * (df["sale_rate"] - df.net_purchase_amount) / df.net_purchase_amount
+        )
 
     df = df.sort_values(by="profit", ascending=False)
 
