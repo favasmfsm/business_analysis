@@ -69,7 +69,7 @@ if df1 and df2:
     # for unique description in df with net_purchase_amount less than 10, ask the user to enter the net_purchase_amount
     for description in df["Description"].unique():
         if df[df["Description"] == description]["net_purchase_amount"].min() < 10:
-            st.write(description)
+            # st.write(description)
             net_purchase_amount = st.sidebar.text_input(
                 "purchase amount for " + description,
                 value=df[df["Description"] == description]["net_purchase_amount"].min(),
@@ -92,9 +92,11 @@ if df1 and df2:
     # profit_df = profit_df.sort_values(by="profit", ascending=False)
     profit_df["Date"] = profit_df["Date"].dt.strftime("%d-%m-%Y")
     st.title("Profit Summary")
+    total_profit = profit_df["profit"].sum()
+    st.write("Total Profit: " + str(total_profit))
     st.dataframe(profit_df)
 
-    selected_date = st.sidebar.selectbox("Select a date", profit_df.index)
+    selected_date = st.sidebar.selectbox("Select a date", profit_df.Date)
     date_df = df[df["Date"] == pd.to_datetime(selected_date)]
 
     st.title("Sales Summary for " + selected_date.strftime("%Y-%m-%d"))
