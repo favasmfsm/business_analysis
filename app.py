@@ -67,7 +67,7 @@ if df1 and df2:
                 value=df[df["Description"] == description]["net_purchase_amount"].min(),
                 key=description,
             )
-            df.loc[df["Description"] == description, "net_purchase_amount"] = int(
+            df.loc[df["Description"] == description, "net_purchase_amount"] = float(
                 net_purchase_amount
             )
 
@@ -79,12 +79,10 @@ if df1 and df2:
             # st.write(description)
             net_purchase_amount = st.sidebar.text_input(
                 "purchase amount for " + description,
-                value=int(
-                    df[df["Description"] == description]["net_purchase_amount"].min()
-                ),
+                value=df[df["Description"] == description]["net_purchase_amount"].min(),
                 key=description,
             )
-            df.loc[df["Description"] == description, "net_purchase_amount"] = int(
+            df.loc[df["Description"] == description, "net_purchase_amount"] = float(
                 net_purchase_amount
             )
     df["profit"] = df.Qty * (df["sale_rate"] - df.net_purchase_amount)
