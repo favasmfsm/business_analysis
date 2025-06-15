@@ -24,23 +24,15 @@ if df1 and df2:
 
     df = df[
         [
-            "SI",
             "Inv No:",
-            "Vouch. Type",
             "Date",
             "Customer Name",
             "Customer  Address",
-            "Ref Date",
-            "ItemCode_sales",
             "Description",
             "Qty",
-            "Unit_sales",
             "Rate_sales",
-            "GrossAmt",
             "Net Amount",
-            "ItemCode_purchase",
             "Stock",
-            "Unit_purchase",
             "Rate_purchase",
             "Stock Value",
             "MRP",
