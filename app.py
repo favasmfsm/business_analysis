@@ -51,20 +51,20 @@ if df1 and df2:
     df["sale_rate"] = df["Net Amount"] / df.Qty
     df["profit"] = df["sale_rate"] - df["net_purchase_amount"]
 
-    filter_rate = st.sidebar.number_input(
-        "Enter the price for AUTO MOTIVE FILTTER", value=35, step=1
-    )
-    loose_oil_rate = st.sidebar.number_input(
-        "Enter the price for LOOSE OIL", value=115, step=1
-    )
-    if filter_rate:
-        df.loc[df["Description"] == "AUTO MOTIVE FILTTER", "net_purchase_amount"] = (
-            filter_rate * 1.18
-        )
-    if loose_oil_rate:
-        df.loc[df["Description"] == "LOOSE OIL", "net_purchase_amount"] = (
-            loose_oil_rate * 1.18
-        )
+    # filter_rate = st.sidebar.number_input(
+    #     "Enter the price for AUTO MOTIVE FILTTER", value=35, step=1
+    # )
+    # loose_oil_rate = st.sidebar.number_input(
+    #     "Enter the price for SAVOLOOSE OIL", value=115, step=1
+    # )
+    # if filter_rate:
+    #     df.loc[df["Description"] == "AUTO MOTIVE FILTTER", "net_purchase_amount"] = (
+    #         filter_rate * 1.18
+    #     )
+    # if loose_oil_rate:
+    #     df.loc[df["Description"] == "SAVO LOOSE OIL", "net_purchase_amount"] = (
+    #         loose_oil_rate * 1.18
+    #     )
 
     # for unique description in df with net_purchase_amount less than 10, ask the user to enter the net_purchase_amount
     for description in df["Description"].unique():
